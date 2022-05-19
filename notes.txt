@@ -1,0 +1,22 @@
+Install Docker Desktop 4.0
+
+docker network prune
+
+docker-compose -f docker-compose-httpbin.yml --project-name httpbin-network up
+docker-compose -f docker-compose-alpine.yml --project-name alpine-network up 
+
+docker network ls
+Check theres an entry for alpine-network and httpbin-network
+
+docker ps
+Grab the id of the alpine container
+
+docker exec -it <alpine container id> sh
+apk --no-cache add curl
+
+curl -X GET "http://host.docker.internal:8080/get?name=testing-docker-networks" -H "accept: application/json"
+
+
+-----------
+
+Install Docker Desktop 4.8.2
